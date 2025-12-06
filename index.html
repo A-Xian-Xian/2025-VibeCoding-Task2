@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex · Frontend Dev | 個人品牌網站</title>
-    <meta name="description" content="這是一個前端工程師的個人品牌網站，展示我的技術技能、精選作品集以及聯絡方式。">
+    <meta name="description" content="這是一個前端工程師的個人品牌網站，完整展示我的技術技能、精選作品集、實作案例與合作經驗，並提供多種聯絡方式，方便訪客快速了解並與我聯繫。">
 
     <style>
         /* * ==========================================
@@ -138,10 +138,75 @@
 
 
         /* CSS:ABOUT-START */
-        .section-about .about-content {
-            background-color: var(--color-surface);
-            padding: 2rem;
+        .section-about .about-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .section-about .about-text {
+            color: var(--color-text-muted);
+        }
+
+        .section-about .strength-list {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .section-about .strength-item {
+            display: flex;
+            align-items: center;
+            color: var(--color-text-main);
+            font-weight: 500;
+        }
+
+        .section-about .strength-item::before {
+            content: "✔";
+            color: var(--color-primary);
+            margin-right: 10px;
+            font-size: 1.1em;
+        }
+
+        .section-about .btn-group {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .section-about .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+
+        .section-about .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-bg);
+            border: 1px solid var(--color-primary);
+        }
+
+        .section-about .btn-outline {
+            background-color: transparent;
+            color: var(--color-primary);
+            border: 1px solid var(--color-primary);
+        }
+
+        .section-about .btn-outline:hover {
+            background-color: rgba(56, 189, 248, 0.1);
+        }
+
+        .section-about .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
             border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
         }
         /* CSS:ABOUT-END */
 
@@ -239,6 +304,7 @@
 
         /* 平板與桌面版樣式覆寫 */
         @media (min-width: 768px) {
+            /* Hero RWD */
             .section-hero {
                 flex-direction: row;
                 align-items: center;
@@ -253,6 +319,16 @@
                 margin-top: 0;
             }
             
+            /* About RWD */
+            .section-about .about-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                align-items: center;
+                gap: 3rem;
+            }
+            /* 預設順序：左文右圖，若要調整順序可用 order 屬性 */
+
+            /* Contact RWD */
             .contact-links {
                 flex-direction: row;
                 justify-content: center;
@@ -303,12 +379,27 @@
             <section id="about" class="section section-about" aria-labelledby="about-heading">
                 <div class="container">
                     <h2 id="about-heading" class="section-title">關於我</h2>
-                    <div class="about-content">
-                        <p>你好，這是一個關於我的簡介占位區塊。</p>
-                        <p>我是一名熱愛技術的前端開發者，這裡未來會放置我的詳細介紹、背景故事以及職業目標。</p>
-                        <div class="placeholder-note">
-                            <strong>給開發者：</strong><br>
-                            之後會用 Section SDD 的 Prompt 產生新的 section，請把新的 section 程式碼整段貼在這兩個註解中間，完全取代現在這一區。
+                    <div class="about-grid">
+                        <div class="about-text">
+                            <p>我是一名熱衷於將設計轉化為互動現實的前端工程師。目前專注於網頁開發與技術教學，擅長使用現代化框架解決複雜的介面問題，並致力於優化使用者的瀏覽體驗。</p>
+                            <p>我的工作風格強調清晰的溝通與結構化的思考。我不僅喜歡寫出乾淨的程式碼，更喜歡把複雜的技術概念用簡單的方式傳達給團隊或學生，確保每個人都在同一個頻率上。</p>
+                            
+                            <ul class="strength-list">
+                                <li class="strength-item">擅長 HTML/CSS 語意化與無障礙設計</li>
+                                <li class="strength-item">具備豐富的 RWD 響應式切版經驗</li>
+                                <li class="strength-item">重視團隊協作與程式碼可維護性</li>
+                            </ul>
+
+                            <div class="btn-group">
+                                <a href="#projects" class="btn btn-primary">查看作品集</a>
+                                <a href="#contact" class="btn btn-outline">聯絡我</a>
+                            </div>
+                        </div>
+                        <div class="about-image">
+                            <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                                 alt="專注於螢幕程式碼的軟體工程師"
+                                 width="800" height="600"
+                                 loading="lazy">
                         </div>
                     </div>
                 </div>
